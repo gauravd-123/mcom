@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Exp No. 01</h1>
+        <p>
+            Vm =72*5/18<br>
+            fc =900*10^6<br>
+            c =3*10^8<br>
+<br>
+            Q1 =180* %pi /180<br>
+<br>
+            Q2 =0* %pi /180<br>
+            Q3 =60* %pi /180<br>
+            Q4 =90* %pi /180<br>
+<br>
+            fd1 =fc*Vm* cos (Q1)/c // doppler shift<br>
+            fd2 =fc*Vm* cos (Q2)/c<br>
+<br>
+            fd3 =fc*Vm* cos (Q3)/c<br>
+            fd4 =fc*Vm* cos (Q4)/c<br>
+<br>
+            fr1 =fc+fd1 // received carrier frequency<br>
+            fr2 =fc+fd2<br>
+<br>
+            fr3 =fc+fd3<br>
+            fr4 =fc+fd4<br>
+<br>
+            printf ( '\n received carrier frequency directly away from base station transmitter = %.5f MHz ',fr1*10^( -6) );<br>
+<br>
+            printf ( '\n received carrier frequency directly towards from base station transmitter = %.5f MHz ',fr2 *10^( -6) )<br>
+<br>
+            printf ( '\n received carrier frequency in direction 60 deg to direction of arrival = %.5f MHz ',fr3*10^( -6) )<br>
+<br>
+            printf ( ' \n received carrier frequency in direction perpendicular to direction of arrival = %.5f MHz' ,fr4 *10^( -6) );<br>
+        </p>
+        <p>
+            Output:<br>
+            received carrier frequency directly away from base station transmitter = 899.99994 MHz <br>
+            received carrier frequency directly towards from base station transmitter = 900.00006 MHz <br>
+            received carrier frequency in direction 60 deg to direction of arrival = 900.00003 MHz  <br>
+            received carrier frequency in direction perpendicular to direction of arrival = 900.00000 MHz<br>
+        </p>
+        <br>
+        <h1>Exp No. 02</h1>
+        <p>
+            r1 =1<br>
+<br>
+            y =40* log10 (r1 /(2* r1))<br>
+<br>
+            Delc1 = round (y) // change in received signal strengths <br>
+            disp (Delc1 , ' del c in db when r2=2r1 ' )<br>
+<br>
+            Delc2 =40* log10 (r1 /(10* r1)) // change in received signal strengths<br>
+            disp (Delc2 , ' del c in db when r2=10 r1 ' )<br>
+        </p>
+        <p>
+            Output:<br>
+            -12.<br>
+<br>
+            " del c in db when r2=2r1 "<br>
+        <br>
+            -40.000000<br>
+        <br>
+            " del c in db when r2=10 r1 "<br>
+        </p>
+        <h1>Exp No. 03</h1>
+        <p>            
+            //Sample Scilab code to determine cluster size<br>
+<br>
+            i=2 // no. of cells (centre to centre) along any chain of hexagon<br>
+<br>
+            j=4 // no. of cells (centre to centre) in 60 deg. counter clockwise of i <br>
+            N=i*i+j*j+i*j //cluster size<br>
+<br>
+            disp (N, 'no. of cells in a cluster for i=2 & j=4')<br>
+            i1 =3; j1 =3<br>
+<br>
+            N1=i1*i1+j1*j1+i1*j1 // cluster size 8<br>
+<br>
+            disp (N1 , 'no. of cells in a cluster for i=3 & j=3')<br>
+<br>
+            //Sample Scilab code to determine cluster distance<br>
+<br>
+            R =.64 // radius<br>
+<br>
+            q =12 // co-channel reuse ratio <br>
+            D=q*R //nearest distance<br>
+<br>
+            disp (D, ' distance from the nearest co-channel cell in km' )<br>
+        </p>
+        
+        <p>
+            Output:<br>
+            28.<br>
+<br>
+            "no. of cells in a cluster for i=2 & j=4"<br>
+<br>
+            27.<br>
+<br>
+            "no. of cells in a cluster for i=3 & j=3"<br>
+<br>
+            7.68<br>
+<br>
+            " distance from the nearest co-channel cell in km"<br> 
+        </p>
+        <br>
+        <h1>Exp No. 04</h1>
+        <p>
+            r0 =2*10^3<br>
+            r1 =1*10^3<br>
+<br>
+            nl =4 // no . of large cells<br>
+<br>
+            ns =( r0/r1) ^2* nl -1 // split cells withing area = split cells within square -1<br>
+<br>
+            ncpl =120<br>
+<br>
+            n2=nl* ncpl //no .of channels without cell splitting<br>
+            ncps =120<br>
+<br>
+            n1=ns* ncps // no .of channels with cell splitting <br>
+            inc =n1/n2 // increase in the number of cells<br>
+<br>
+            disp (inc , ' increase in the number of cells in times ' )<br>
+        </p>
+        
+        <p>
+            Output:<br>
+            3.75<br>
+<br>
+            " increase in the number of cells in times "<br>
+        </p>
+        <br>
+        <h1>Exp No. 05</h1>
+        <p>
+            //Sample Scilab code for Co-channel Interference ratio in 3 sector system<br>
+<br>
+            N =2<br>
+<br>
+            Y =4<br>
+<br>
+            K =7<br>
+<br>
+            q = sqrt (3* K )<br>
+<br>
+            CI =(( q ^( - Y ) +( q +0.7) ^( - Y ) )) ^( -1) //C/ I for 3 sector <br>
+            CIdB =10* log10 ( CI )<br>
+<br>
+            disp ( CIdB , ' worst case signal to co channel interference ratio C/ I i n dB ' )<br>
+<br>
+            //Sample Scilab code for Co-channel Interference ratio in 6 sector system<br>
+<br>
+            N =1<br>
+<br>
+            Y =4<br>
+<br>
+            K =7<br>
+<br>
+            q = sqrt (3* K )<br>
+<br>
+            CI =(( q +0.7) ^( - Y ) ) ^( -1) //C/ I f or 6 sector<br>
+<br>
+            CIdB =10* log10 ( CI )<br>
+<br>
+            disp ( CIdB , ' signal to co channel interference ratio C/I in dB')<br>
+        </p>
+            
+        <p>
+            Output:<br>
+            24.495603<br>
+<br>
+            " worst case signal to co channel interference ratio C/ I i n dB "<br>
+<br>
+            28.913829<br>
+<br>
+            " signal to co channel interference ratio C/I in dB"<br>
+
+        </p>
+        <br>
+        <h1>Exp No. 06</h1>
+        <p>
+
+            Rc = 10*10^6<br>
+            Bc = Rc<br>
+            Rb = 4.8*10^3<br>
+            Gp = Bc/Rb<br>
+            GpdB = 10*log10(Gp)<br>
+            Rc1 = 50*10^6<br>
+            Bc1 = Rc1<br>
+            Gp1 = Bc1/Rb<br>
+            Gp1dB = 10*log10(Gp1);<br>
+            Inc = Gp1dB - GpdB<br>
+            printf('increase in processing gain = %.1f dB',Inc+0.1);<br>
+
+
+        </p>
+           
+        <p>
+            Output:<br>
+            increase in processing gain = 7.1 dB<br>
+        </p>
+        <br>
+        <h1>Exp No. 07</h1>
+        <p>
+            Prm = -85<br>
+<br>
+            Ptm =-76 - Prm<br>
+            Ptrm =5<br>
+<br>
+            Diff =Ptm - Ptrm<br>
+            t1dB =1.25<br>
+<br>
+            t= Diff * t1dB // time for adjusting<br>
+<br>
+            disp (t, ' time needed to adjust mobile transmitter level in msecs ')<br>
+        </p>
+        <p>
+            Output:<br>
+            5.<br>
+<br>
+            " time needed to adjust mobile transmitter level in msecs "<br>
+        </p>
+        <br>
+        <h1>Exp No. 08</h1>
+        <p>
+            CDMA Transmitter code:<br>
+<br>
+            clc;<br>
+            spread=[];<br>
+            <br>
+            Data=((randi(1,8))>.5)+0;<br>
+            <br>
+            Goldcode=((randi(1,15))>.5)+0;<br>
+            k=1;<br>
+            <br>
+            LD=length(Data);<br>
+            <br>
+            LG=length(Goldcode);<br>
+            for i=1:LD<br>
+                for j=1:LG<br>
+                    spread(1,k)=xor(Data(1,i),Goldcode(1,j));<br>
+                    k=k+1;<br>
+                end<br>
+            end<br>
+            %.......bit time............<br>
+<br>
+            figure<br>
+            Tb=10;<br>
+            <br>
+            Data_pulse = rectpulse(Data(1,:),10);<br>
+            subplot(3,1,1);<br>
+            <br>
+            stem(Data_pulse);<br>
+<br>
+            ylabel('\bf Original Bit Sequence');<br>
+            title('\bf\it TRANSMITTED MESSAGE');<br>
+            Gold_pulse = rectpulse(Goldcode(1,:),10);<br>
+            subplot(3,1,2);<br>
+<br>
+            stem(Gold_pulse);<br>
+            ylabel('\bf Gold Code');<br>
+<br>
+            %.........................<br>
+            spreaded_pulse = rectpulse(spread(1,:),10);<br>
+            subplot(3,1,3);<br>
+<br>
+            stem(spreaded_pulse);<br>
+            ylabel('\bf Spreaded Sequence');<br>
+        </p>
+        <p>
+            CDMA Receiver code:<br>
+<br>
+            i=1;<br>
+            k=1;<br>
+            los= length(spread);<br>
+            while k < los<br>
+                s=0;<br>
+                for j=1:15<br>
+                    temp(1,j) = xor(spread(1,k),Goldcode(1,j));<br>
+                    k=k+1;<br>
+                    s=s+temp(1,j);<br>
+                end<br>
+                if(s==0)<br>
+                    b2(1,i) = 0;<br>
+                else<br>
+                    b2(1,i) = 1;<br>
+                end<br>
+                i=i+1;<br>
+            end<br>
+            despreaded_signal = b2;<br>
+            figure<br>
+            pattern=[];<br>
+            for k=1:8<br>
+                if b2(1,k)==0<br>
+                    sig=zeros(1,10);<br>
+                else<br>
+                    sig=ones(1,10);<br>
+                end<br>
+                pattern =[pattern sig];<br>
+            end<br>
+            subplot(3,1,1);<br>
+            stem(spreaded_pulse);<br>
+            ylabel('\bf Spreaded Sequence');<br>
+            title('\bf\it Received MESSAGE');<br>
+            Gold_pulse = rectpulse(Goldcode(1,:),10);<br>
+            subplot(3,1,2);<br>
+            stem(Gold_pulse);<br>
+            ylabel('\bf Gold Code');<br>
+            subplot(3,1,3);<br>
+            stem(pattern);<br>
+            ylabel('\bf Despreaded Sequence');<br>
+        </p>
+
+    </div>
+</body>
+</html>
